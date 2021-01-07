@@ -179,8 +179,14 @@ public class TelePhoneManager {
         return ret;
     }
 
-    public void onDestory()
+    public void onDestroy()
     {
+        Log.d(TAG,"onDestroy()");
         SysProperties.setAudioVirtualState(mContext,false);
+        Log.d(TAG,"onDestroy() exit");
+    }
+
+    public void onSetAudioVirtualState(boolean state){
+        SysProperties.setAudioVirtualState(mContext,state);
     }
 }

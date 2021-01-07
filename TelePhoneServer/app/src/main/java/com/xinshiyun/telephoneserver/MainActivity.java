@@ -69,11 +69,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onDestroy() {
+    protected void onPostResume() {
+        super.onPostResume();
+        Log.d(TAG, "onPostResume()");
+        if(mTelePhoneManager != null){
+            mTelePhoneManager.onSetAudioVirtualState(true);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause()");
+        if(mTelePhoneManager != null){
+            mTelePhoneManager.onSetAudioVirtualState(false);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
         Log.d(TAG, "onDestroy()");
         super.onDestroy();
-        mTelePhoneManager.onDestory();
-        mTelePhoneManager = null;
+        if(mTelePhoneManager != null){
+            mTelePhoneManager.onDestroy();
+            mTelePhoneManager = null;
+        }
     }
 }
 

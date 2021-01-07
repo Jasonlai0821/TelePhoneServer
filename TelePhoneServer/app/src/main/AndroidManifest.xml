@@ -56,11 +56,13 @@
 
         <activity android:name=".MainActivity"
             android:icon="@drawable/ic_launcher"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="com.xsy.telephoneserver.default"/>
             </intent-filter>
         </activity>
         <service android:name=".linphone.AudioRecorderService" />
